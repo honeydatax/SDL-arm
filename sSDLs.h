@@ -48,3 +48,23 @@ void vline(	SDL_Surface *surfaces,int x,int y,int y2,int b,int g,int r){
 	ccolor=(b/85)|((g/85)<<3)|((r/85)<<6);
 	vlineA(ppixel,0,count1,surfaces->w,ccolor);
 }
+void hline(	SDL_Surface *surfaces,int x,int y,int x2,int b,int g,int r){
+	int ccolor;
+	char *ppixel;
+	int xx=x;
+	int yy=y;
+	int count1=1;
+	int nexts1=1;
+	char *pixels=(char *) surfaces->pixels;
+	if(xx<0)xx=0;
+	if(yy<0)yy=0;
+	if(xx>=surfaces->w)xx=surfaces->w-1;
+	if(yy>=surfaces->h)yy=surfaces->h-1;
+	count1=x2-xx;
+	if (count1+xx>=surfaces->w)count1=surfaces->w-1-xx;
+	if(xx<0)xx=0;
+	if(yy<0)yy=0;
+	ppixel=pixels+(yy*surfaces->w+xx);
+	ccolor=(b/85)|((g/85)<<3)|((r/85)<<6);
+	vlineA(ppixel,0,count1,1,ccolor);
+}
