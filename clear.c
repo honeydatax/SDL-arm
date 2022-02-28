@@ -10,6 +10,15 @@ int main(int argc,char *argv[]){
 	atexit(SDL_Quit);
 	sss=SDL_SetVideoMode(640,480,8,0);
 	clears(sss,178,178,178);
+	lineR(sss,0,0,640,480,0,0,0);
+	lineL(sss,0,480,640,0,0,0,0);
+	for(n=0;n<sss->h-1;n=n+16){
+		line(sss,0,n,640,n,0,0,0);
+	}
+	for(n=0;n<sss->w-1;n=n+16){
+		line(sss,n,0,n,479,0,0,0);
+	}
+
 	SDL_Flip(sss);
 	SDL_WM_SetCaption("vline...",NULL);
 	while(1){
